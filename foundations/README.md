@@ -28,26 +28,33 @@ NDIA
 
 # Active Directory Organizational Unit (OU) Structure
 
-NDIA
-│
-├── Executives
-├── HumanResources
-├── Finance
-├── Legal
-├── Audit
-├── IdentityOperations
-├── Technology
-├── Security
-├── CitizenServices
-├── RegionalOffices
-│
-├── ServiceAccounts
-├── PrivilegedAccounts
-├── Servers
-├── Workstations
-├── Groups
-├── Contractors
-└── DisabledUsers
+The [Day 4 domain design](../architecture/ad-domain-design.md) defines the planned `adlab.test` directory. It refines the original department-based sketch by placing standard department accounts under a custom `Users` OU and separating groups, computers, service identities, and administrative identities.
+
+```text
+adlab.test
+├── Domain Controllers                 (default OU; future NDIA-DC01)
+└── NDIA
+    ├── Users
+    │   ├── Executives
+    │   ├── HumanResources
+    │   ├── Finance
+    │   ├── Legal
+    │   ├── Audit
+    │   ├── IdentityOperations
+    │   ├── Technology                 (Engineering and Helpdesk)
+    │   ├── Security
+    │   ├── CitizenServices
+    │   ├── RegionalOffices
+    │   └── Contractors
+    ├── Groups
+    ├── Workstations
+    ├── Servers
+    ├── ServiceAccounts
+    ├── PrivilegedAccounts
+    └── DisabledUsers
+```
+
+All entries below the domain in this diagram are OUs. The proposed `GG_*` security groups are separate objects stored in `NDIA/Groups`; no objects have been deployed yet.
 
 ---
 
@@ -82,7 +89,7 @@ NDIA
 
 ### Active Directory Placement
 
-- Standard Engineering user accounts belong in the existing `Technology` OU.
+- Standard Engineering user accounts are planned for `OU=Technology,OU=Users,OU=NDIA,DC=adlab,DC=test`, as defined in the Day 4 design.
 
 ### Resources
 

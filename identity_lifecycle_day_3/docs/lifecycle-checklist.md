@@ -2,6 +2,8 @@
 
 This checklist defines planned controls for John's identity lifecycle in the fictional NDIA test environment.
 
+**Day 4 design refinement:** The [domain and OU design](../../architecture/ad-domain-design.md) places `Technology` and `Security` under `NDIA/Users` in `adlab.test`, while `DisabledUsers` remains under `NDIA`. That design supplies full directory paths and adds team-group membership changes alongside the resource-access changes below; these are planned refinements, not deployed changes.
+
 ## Joiner — John joins Engineering
 
 **Scenario:** John joins Technology Services as a Software Engineer on the Engineering team. He needs a standard AD user account and approved access to the Engineering Project Share.
