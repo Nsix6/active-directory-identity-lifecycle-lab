@@ -10,7 +10,7 @@
 
 ## Scope and method
 
-Review the saved design against the seven Day 4 study-plan checks. Compare object placement and group/access definitions with the [NDIA foundations](../foundations/README.md) and [John's lifecycle controls](../identity_lifecycle_day_3/docs/lifecycle-checklist.md), and check repository file presence and local links.
+Review the saved design against the seven Day 4 study-plan checks. Compare object placement and group/access definitions with the [NDIA foundations](../../day-01-identity-foundations/README.md) and [John's lifecycle controls](../../day-03-identity-lifecycle/docs/lifecycle-checklist.md), and check repository file presence and local links.
 
 This is design evidence. No Windows Server was installed and no domain, DC, OU, user, group, GPO, delegation, or share was created in AD during this work. No live authentication, permission, session-removal, or rollback tests were run. Microsoft Learn reading and assessment completion are not inferred from these artifacts.
 
@@ -47,16 +47,16 @@ No mandatory Day 4 design requirement was found missing. Live permission outcome
 
 ## Sanitized command evidence
 
-Run from the repository root:
+Run from the repository root. These command paths were updated for the daily lab layout on 22 October 2026:
 
 ```sh
-test -f architecture/ad-domain-design.md && echo "Design file: PASS"
-test -f evidence/day-04-verification.md && echo "Verification file: PASS"
+test -f labs/day-04-directory-basics/architecture/ad-domain-design.md && echo "Design file: PASS"
+test -f labs/day-04-directory-basics/evidence/day-04-verification.md && echo "Verification file: PASS"
 ```
 
 Expected: both files exist and both commands print PASS. A separate read-only check also resolved every local Markdown link and checked code-fence pairs in the five created or updated documents.
 
-Actual output:
+Original review output from 21 October 2026 (the link and document counts describe that review, before the new daily navigation READMEs were added):
 
 ```text
 Design file: PASS

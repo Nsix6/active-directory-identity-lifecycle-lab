@@ -1,4 +1,14 @@
-# National Digital Identity Authority (NDIA)
+# Day 1 — Identity Foundations
+
+**Focus:** Establish IAM vocabulary and define the fictional organization used by later labs.
+
+**Status:** The IAM glossary and NDIA organization are documented. The directory structure below is a planned design.
+
+- [Identity glossary](docs/identity-glossary.md)
+- [Current NDIA domain design from Day 4](../day-04-directory-basics/architecture/ad-domain-design.md)
+- [Daily progress index](../../README.md)
+
+## National Digital Identity Authority (NDIA)
 
 ## Overview
 
@@ -28,7 +38,7 @@ NDIA
 
 # Active Directory Organizational Unit (OU) Structure
 
-The [Day 4 domain design](../architecture/ad-domain-design.md) defines the planned `adlab.test` directory. It refines the original department-based sketch by placing standard department accounts under a custom `Users` OU and separating groups, computers, service identities, and administrative identities.
+The [Day 4 domain design](../day-04-directory-basics/architecture/ad-domain-design.md) defines the planned `adlab.test` directory. It refines the original department-based sketch by placing standard department accounts under a custom `Users` OU and separating groups, computers, service identities, and administrative identities.
 
 ```text
 adlab.test

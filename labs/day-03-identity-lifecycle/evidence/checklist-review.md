@@ -6,7 +6,7 @@
 
 **Artifact reviewed:** [AD identity lifecycle checklist](../docs/lifecycle-checklist.md)
 
-**Supporting documents:** [John's lifecycle scenario](../docs/doc.md) and [NDIA organization and OU design](../../foundations/README.md).
+**Supporting documents:** [John's lifecycle scenario](../docs/doc.md) and [NDIA organization and OU design](../../day-01-identity-foundations/README.md).
 
 ## Test scope and method
 

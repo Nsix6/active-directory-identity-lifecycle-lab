@@ -6,7 +6,7 @@
 
 **Status:** Design complete; deployment and live access tests pending.
 
-This document is the implementation design for the directory described in the [NDIA foundations](../foundations/README.md) and [John's Day 3 lifecycle checklist](../identity_lifecycle_day_3/docs/lifecycle-checklist.md). All accounts, groups, servers, shares, and delegations below are proposed test objects. No domain controller is deployed by this exercise.
+This document is the implementation design for the directory described in the [NDIA foundations](../../day-01-identity-foundations/README.md) and [John's Day 3 lifecycle checklist](../../day-03-identity-lifecycle/docs/lifecycle-checklist.md). All accounts, groups, servers, shares, and delegations below are proposed test objects. No domain controller is deployed by this exercise.
 
 ## Directory concepts in this lab
 
@@ -126,7 +126,7 @@ These UNC paths are proposed test shares, not folders inside AD OUs. During the 
 
 ## Joiner, mover, and leaver mapping
 
-The event owners, triggers, verification, and rollback controls remain defined in the [Day 3 checklist](../identity_lifecycle_day_3/docs/lifecycle-checklist.md). This table supplies concrete directory paths and adds role-group membership changes to that plan.
+The event owners, triggers, verification, and rollback controls remain defined in the [Day 3 checklist](../../day-03-identity-lifecycle/docs/lifecycle-checklist.md). This table supplies concrete directory paths and adds role-group membership changes to that plan.
 
 | Event | Account and placement | Required group/access change | Planned verification |
 | --- | --- | --- | --- |
