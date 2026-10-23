@@ -80,4 +80,4 @@ The checklist defines an owner, trigger, access change, verification step, and r
 - [Day 4 verification, expected versus actual results, and deviations](labs/day-04-directory-basics/evidence/day-04-verification.md)
 - [Assigned reading: Introduction to AD DS](https://learn.microsoft.com/en-us/training/modules/introduction-to-ad-ds/)
 
-The design includes the five required OUs, places employee accounts within NDIA departments, defines proposed security groups and test-share permissions, and maps John's joiner, mover, and leaver controls to directory objects. The foundations diagram and Day 3 checklist reference the refined hierarchy; this repository update does not claim that AD is deployed or that the reading assessment has been completed.
+The design explains the six Day 4 directory concepts, includes the five required OUs, places employee accounts within NDIA departments, and defines the proposed groups with a simple folder-access example. It connects John's lifecycle to account locations and group membership. AD installation and access configuration are later work; these documents do not certify completion of the reading assessment.

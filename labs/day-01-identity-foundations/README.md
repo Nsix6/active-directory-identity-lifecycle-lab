@@ -99,7 +99,7 @@ All entries below the domain in this diagram are OUs. The proposed `GG_*` securi
 
 ### Active Directory Placement
 
-- Standard Engineering user accounts are planned for `OU=Technology,OU=Users,OU=NDIA,DC=adlab,DC=test`, as defined in the Day 4 design.
+- Standard Engineering user accounts are planned for the `Technology` OU under `NDIA/Users` in `adlab.test`, as defined in the Day 4 design.
 
 ### Resources
 

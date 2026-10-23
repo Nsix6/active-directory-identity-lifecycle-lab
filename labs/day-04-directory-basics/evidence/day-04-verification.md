@@ -1,30 +1,32 @@
 # Day 4 — Directory Basics Verification
 
-**Review date:** 21 October 2026 (Africa/Lagos)
+**Original review date:** 21 October 2026 (Africa/Lagos)
 
-**Organization:** National Digital Identity Authority (NDIA), fictional
+**Updated scope review:** 23 October 2026 (Africa/Lagos)
+
+**Organization:** National Digital Identity Authority (NDIA), fictional.
 
 **Artifact:** [AD domain and OU design](../architecture/ad-domain-design.md)
 
-**Result:** PASS for design review; deployment and live testing pending.
+**Result:** PASS for the written design requirements. No AD objects were created or tested.
 
 ## Scope and method
 
-Review the saved design against the seven Day 4 study-plan checks. Compare object placement and group/access definitions with the [NDIA foundations](../../day-01-identity-foundations/README.md) and [John's lifecycle controls](../../day-03-identity-lifecycle/docs/lifecycle-checklist.md), and check repository file presence and local links.
+Review the design against the seven Day 4 checks. Compare the organization with the [Day 1 NDIA description](../../day-01-identity-foundations/README.md) and John's account changes with the [Day 3 lifecycle checklist](../../day-03-identity-lifecycle/docs/lifecycle-checklist.md).
 
-This is design evidence. No Windows Server was installed and no domain, DC, OU, user, group, GPO, delegation, or share was created in AD during this work. No live authentication, permission, session-removal, or rollback tests were run. Microsoft Learn reading and assessment completion are not inferred from these artifacts.
+The 23 October review simplifies the documents to directory basics. It removes detailed configuration instructions and advanced naming details, while retaining the folder-access example required by the study plan. The original review date is retained to distinguish the first review from this revision.
 
 ## Expected outcome and actual result
 
-| Check | Expected result | Actual result from document review | Outcome |
+| Check | Expected result | Actual result from the updated document review | Outcome |
 | --- | --- | --- | --- |
-| 1. Forest and domain | Define one forest and one domain and explain the choice. | The design defines forest root and sole domain `adlab.test`, base `DC=adlab,DC=test`, and explains why one organization/lab team does not require extra domains or trusts. | PASS |
-| 2. Required OUs | Include `Users`, `Groups`, `Workstations`, `Servers`, and `ServiceAccounts`. | All five are children of `NDIA`; employee department OUs are under `Users`. The hierarchy also retains NDIA's `PrivilegedAccounts` and `DisabledUsers`. | PASS |
-| 3. Object locations | Place users, computers, and groups appropriately. | Standard users go to department OUs, groups to `Groups`, workstations/member servers to their respective OUs, and service/admin identities to separate OUs. The future DC remains in the default `Domain Controllers` OU. | PASS |
-| 4. Group purposes | Define every proposed group's members and responsibility. | Seven Global security groups have explicit purposes and approvers: `GG_Engineering`, `GG_Audit`, `GG_Helpdesk`, `GG_SecurityOperations`, `Engineering_Project_RW`, `Engineering_Project_Read`, and `Security_Monitoring_Read`. | PASS |
-| 5. Resource or delegation mapping | Map at least one group to a protected folder or administrative responsibility. | Three proposed shares have group-to-permission mappings and negative tests. `GG_Helpdesk` has a narrowly scoped password-reset/unlock delegation proposal rather than broad administrator rights. | PASS |
-| 6. Lifecycle support | Explain joiner, mover, and leaver behavior for the same identity. | `john.test` moves from `Technology` to `Security`, loses Engineering write access, retains only approved read access, and is eventually disabled, stripped of resource access, and moved to `DisabledUsers`. Team-group changes, session checks, and Day 3 rollback references are included. | PASS |
-| 7. Evidence | Record expected results, actual results, and differences. | This file records the seven review outcomes, command evidence, deviations from the example, and the distinction between reviewed design and unexecuted AD tests. | PASS |
+| 1. Forest and domain | Define one forest and one domain and explain the choice. | One forest contains the single `adlab.test` domain. The design explains that NDIA's departments can be organized within it using OUs and groups. | PASS |
+| 2. Required OUs | Include Users, Groups, Workstations, Servers, and ServiceAccounts. | All five appear beneath the NDIA OU. | PASS |
+| 3. Object locations | Give users, computers, and groups appropriate locations. | Standard users belong in department OUs, group objects in Groups, and workstation/server computer accounts in their respective OUs. The future DC is identified separately in Domain Controllers. | PASS |
+| 4. Group purposes | Define every proposed security group's purpose. | Six groups have stated members and purposes: GG_Engineering, GG_Audit, GG_Helpdesk, Engineering_Project_RW, Engineering_Project_Read, and Security_Monitoring_Read. | PASS |
+| 5. Folder-access example | Map at least one group to a protected folder or administrative responsibility. | The Engineering Project Folder is mapped to its planned write-access and read-only groups. Audit membership alone grants no Engineering access. Configuration details are left for later work. | PASS |
+| 6. Lifecycle support | Explain joiner, mover, and leaver behavior. | John starts in Technology, moves to Security with changed group memberships, and is later disabled and moved to DisabledUsers. | PASS |
+| 7. Evidence | Record expected results, actual results, and differences. | This record documents the review results, NDIA adaptations, file checks, and the scope of the exercise. | PASS |
 
 - [x] One forest and one domain are defined.
 - [x] All five required OUs appear in the design.
@@ -34,39 +36,35 @@ This is design evidence. No Windows Server was installed and no domain, DC, OU, 
 - [x] The design explains how joiner, mover, and leaver events will work.
 - [x] Expected results, actual results, and differences are recorded.
 
-The checked boxes above certify document review, not deployed AD behavior. The Day 3 execution checkboxes remain uncompleted.
+These checks concern the written design. They do not claim that the proposed access works in a running AD environment.
 
-## Differences and design decisions
+## Differences from the study plan's example
 
-1. **NDIA parent and department OUs:** The plan's five required OUs are placed beneath an `NDIA` parent. Existing department names are preserved beneath `Users` instead of retaining the original flat foundations sketch.
-2. **Engineering and Helpdesk placement:** The example's separate team OUs are represented by standard accounts in `Technology`, role/title attributes, and `GG_Engineering` / `GG_Helpdesk`. Audit retains its own departmental OU. This meets the mandatory OU requirements while matching NDIA's Technology Services department and the Day 3 scenario.
-3. **Lifecycle continuity:** `Security`, `PrivilegedAccounts`, and `DisabledUsers` extend the five-OU minimum to support NDIA's documented transfer, administration, and departure controls. The domain design supplies full paths; the foundations and Day 3 documents link to it.
-4. **Permission-group names:** The three Day 3 resource-group names are retained. The study plan's `GG_Engineering`, `GG_Audit`, and `GG_Helpdesk` are also defined; group objects are not mislabeled as OUs. Direct account membership in resource groups is deliberate for this introductory single-domain lab.
+- The required OUs are beneath an NDIA parent OU to match the fictional organization.
+- Engineering and Helpdesk users belong in Technology, while Audit users have their own department OU. The suggested group names are retained.
+- Existing NDIA departments, PrivilegedAccounts, and DisabledUsers are retained for continuity with Days 1 and 3; each has a simple object-placement explanation.
+- Three access-group names from Day 3 are retained so John's scenario remains consistent. Extra administration and configuration details introduced in the first Day 4 draft have been removed.
 
-No mandatory Day 4 design requirement was found missing. Live permission outcomes and delegation behavior have no actual execution result yet; they remain future build tests rather than successful results in this record.
+No required Day 4 design element was found missing in the updated review.
 
-## Sanitized command evidence
+## File checks
 
-Run from the repository root. These command paths were updated for the daily lab layout on 22 October 2026:
+Run from the repository root:
 
 ```sh
 test -f labs/day-04-directory-basics/architecture/ad-domain-design.md && echo "Design file: PASS"
 test -f labs/day-04-directory-basics/evidence/day-04-verification.md && echo "Verification file: PASS"
 ```
 
-Expected: both files exist and both commands print PASS. A separate read-only check also resolved every local Markdown link and checked code-fence pairs in the five created or updated documents.
-
-Original review output from 21 October 2026 (the link and document counts describe that review, before the new daily navigation READMEs were added):
+Expected: both files exist and both commands print PASS. Actual results from the 23 October check:
 
 ```text
 Design file: PASS
 Verification file: PASS
-Local document links: PASS (14 checked)
-Markdown code fences: PASS (5 documents checked)
 ```
 
-File-presence checks do not establish technical AD correctness. The manual review matrix above provides the design assessment; local-link checks confirm that supporting artifacts are reachable within the repository.
+These commands verify file presence. The review table above assesses the written design.
 
 ## How this supports the AD lab
 
-The design converts NDIA's organization and identity lifecycle controls into planned domain, OU, account, group, and resource locations for the upcoming AD build. The verification record supplies acceptance criteria for later provisioning, permission checks, and rollback tests without claiming those tests have already run.
+The design explains where NDIA's users, computers, and groups should belong in the planned directory. It connects those locations to John's joiner, mover, and leaver scenario so the later AD build has a clear starting point.
